@@ -35,21 +35,35 @@
     justify-content: center;
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
-    background-image: url('https://maykelbruno-sketch.github.io/maria-eduarda-15anos/foto%20Maria%20Eduarda.jpeg');
-    background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
-  }
-  
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(253, 240, 235, 0.25);
-    backdrop-filter: blur(1px);
-    z-index: 0;
   }
 
+  /* Fixed photo on the right */
+  .side-photo {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 320px;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+    opacity: 0.92;
+  }
+
+  .side-photo-overlay {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 320px;
+    height: 100vh;
+    background: linear-gradient(to right, var(--cream) 0%, transparent 40%);
+    z-index: 1;
+  }
+
+  @media (max-width: 900px) {
+    .side-photo, .side-photo-overlay { display: none; }
+  }
+  
   /* Animated petal background */
   .petals {
     position: fixed;
@@ -90,11 +104,11 @@
   /* Card */
   .card {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     max-width: 680px;
     width: 94%;
-    margin: 2.5rem auto;
-    background: rgba(255, 255, 255, 0.55);
+    margin: 2.5rem auto 2.5rem 3rem;
+    background: #fff;
     border-radius: 4px;
     box-shadow:
       0 0 0 1px rgba(201,168,76,0.25),
@@ -257,6 +271,10 @@
 
 <!-- Falling petals -->
 <div class="petals" id="petals"></div>
+
+<!-- Side photo -->
+<img class="side-photo" src="https://maykelbruno-sketch.github.io/maria-eduarda-15anos/foto%20Maria%20Eduarda.jpeg" alt="Maria Eduarda" />
+<div class="side-photo-overlay"></div>
 
 <!-- Card -->
 <div class="card">
